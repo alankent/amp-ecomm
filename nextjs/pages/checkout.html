@@ -1,0 +1,142 @@
+<!doctype html>
+<!---
+Copyright 2017 The AMP Start Authors. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS-IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html ⚡="" lang="en">
+%%include('../partials_new/head.html')
+
+<body>
+    %%include('../partials_new/navbar.html')
+    <amp-state id="cart">
+        <script type="application/json">
+        {
+            "total": 723,
+            "shipping": 0
+        }
+        </script>
+    </amp-state>
+    <main id="content" role="main" class="checkout">
+        <section class="checkout-area">
+            <h3>Checkout</h3>
+            <ul class="checkout-steps sans-big">
+                <li class="active">Shipping</li>
+                <li>Billing</li>
+                <li>Payment</li>
+                <li>Confirmation</li>
+            </ul>
+            <hr class="xs-hide sm-hide">
+            <div class="checkout-step-area">
+                <h5>Delivery</h5>
+                <div class="checkout-fields">
+                    <div class="checkout-field title">
+                        <!-- Start Input -->
+                        <div class="input-container">
+                            <input type="text" value="" name="first-name" id="first-name" placeholder="First name">
+                            <label for="first-name" aria-hidden="true">First name</label>
+                        </div>
+                        <!-- End Input-->
+                    </div>
+                    <div class="checkout-field title">
+                        <!-- Start Input -->
+                        <div class="input-container">
+                            <input type="text" value="" name="last-name" id="last-name" placeholder="Last name">
+                            <label for="last-name" aria-hidden="true">Last name</label>
+                        </div>
+                        <!-- End Input-->
+                    </div>
+                    <div class="checkout-field title">
+                        <!-- Start Input -->
+                        <div class="input-container">
+                            <input type="text" value="" name="address-1" id="address-1" placeholder="Address line 1">
+                            <label for="address-1" aria-hidden="true">Address line 1</label>
+                        </div>
+                        <!-- End Input-->
+                    </div>
+                    <div class="checkout-field title">
+                        <!-- Start Input -->
+                        <div class="input-container">
+                            <input type="text" value="" name="address-2" id="address-2" placeholder="Address line 2">
+                            <label for="address-2" aria-hidden="true">Address line 2</label>
+                        </div>
+                        <!-- End Input-->
+                    </div>
+                    <div class="checkout-field title">
+                        <!-- Start Input -->
+                        <div class="input-container">
+                            <input type="text" value="" name="city" id="city" placeholder="City&#x2F;Region">
+                            <label for="city" aria-hidden="true">City&#x2F;Region</label>
+                        </div>
+                        <!-- End Input-->
+                    </div>
+                    <div class="checkout-field title">
+                        <!-- Start Input -->
+                        <div class="input-container">
+                            <input type="text" value="" name="postcode" id="postcode" placeholder="Postcode">
+                            <label for="postcode" aria-hidden="true">Postcode</label>
+                        </div>
+                        <!-- End Input-->
+                    </div>
+                    <div class="checkout-field title">
+                        <!-- Start Input -->
+                        <div class="input-container">
+                            <input type="email" value="" name="email" id="email" placeholder="E-Mail Address">
+                            <label for="email" aria-hidden="true">E-Mail Address</label>
+                        </div>
+                        <!-- End Input-->
+                    </div>
+                    <div class="delivery-area">
+                        <h5>Select Delivery Method</h5>
+                        <div class="radio-buttons">
+                            <!-- Start Radio -->
+                            <div class="input-container radio-container" on="change:AMP.setState({cart: {total: 723, shipping: 0}})">
+                                <input type="radio" value="" name="delivery-method" id="standard" checked="">
+                                <label for="standard" aria-hidden="true">Standard (arrives in 2-3 days) - FREE</label>
+                            </div>
+                            <!-- End Radio -->
+                            <!-- Start Radio -->
+                            <div class="input-container radio-container" on="change:AMP.setState({cart: {total: 753, shipping: 30}})">
+                                <input type="radio" value="" name="delivery-method" id="express">
+                                <label for="express" aria-hidden="true">Express (arrives next day) - £30</label>
+                            </div>
+                            <!-- End Radio -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="xs-hide sm-hide">
+            <div class="cart-wrapper">
+                %%include('../partials_new/cart-items.html')
+                <div class="checkout-actions center">
+                    <a href="checkout-success.html" class="button button-white">Continue</a>
+                </div>
+            </div>
+        </section>
+        <section class="cart-sum-area side-panel">
+            <h5>Order Summary</h5>
+            <dl>
+                <dt>Subtotal</dt>
+                <dd>&#163;698</dd>
+                <dt>Shipping</dt>
+                <dd [text]="'£' + cart.shipping">&#163;0</dd>
+                <dt class="total">Total</dt>
+                <dd class="total" [text]="'£' + cart.total">&#163;723</dd>
+            </dl>
+            <p>Donec id elit non mi porta gravida at eget metus. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        </section>
+    </main>
+    %%include('../partials_new/footer.html')
+</body>
+
+</html>

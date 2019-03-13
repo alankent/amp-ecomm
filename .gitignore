@@ -3,3 +3,9 @@ node_modules
 dist/*
 src/css
 package-lock.json
+nextjs/node_modules
+nextjs/.package-lock.json
+nextjs/dist/*
+nextjs/package-lock.json
+nextjs/yarn.lock
+nextjs/.next
