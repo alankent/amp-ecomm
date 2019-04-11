@@ -3,6 +3,7 @@ node_modules
 dist/*
 src/css
 package-lock.json
+.DS_Store
 nextjs/node_modules
 nextjs/.package-lock.json
 nextjs/dist/*

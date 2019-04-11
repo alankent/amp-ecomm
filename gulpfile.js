@@ -12,6 +12,9 @@ const bs = require('browser-sync').create();
 const autoScript = require('amphtml-autoscript').create();
 const reload = bs.reload;
 const nodemon = require('gulp-nodemon');
+const replace = require('gulp-replace');
+const noop = require('gulp-noop');
+const mergeMediaQuery = require('gulp-merge-media-queries');
 
 // Build type is configurable such that some options can be changed e.g. whether
 // to minimise CSS. Usage 'gulp <task> --env development'.
@@ -35,6 +38,14 @@ const paths = {
         src: 'src/img/**/*.{gif,jpg,png,svg}',
         dest: 'dist/img'
     },
+    favicon: {
+        src: 'src/favicon/*',
+        dest: 'dist/'
+    },
+    rootConfig: {
+        src: 'src/rootConfigFiles/*',
+        dest: 'dist/'
+    },
     server: {
         src: 'src/server/**/*',
         dest: 'dist/server'
@@ -44,12 +55,20 @@ const paths = {
 /**
  * Builds the styles, bases on SASS files taken from src. The resulting CSS is
  * used as partials that are included in the final AMP HTML.
+ * When SASS sees a non-ASCII character in a file, it starts the CSS file it builds with "@charset "UTF-8";".
+ * That's great in CSS files, but not accepted within <style> tags.
+ * So unless the SASS team takes on https://github.com/sass/sass/issues/2288, we need to remove it.
  */
+
 gulp.task('styles', function buildStyles() {
+    const cssEncodingDirective = '@charset "UTF-8";';
+
     return gulp.src(paths.css.src)
         .pipe(plumber())
         .pipe(sass(options.env === 'dist' ? { outputStyle: 'compressed' } : {}))
-        .pipe(autoprefixer({ browsers: ['> 10%'] }))
+        .pipe(options.env === 'dev' ? replace(cssEncodingDirective, '') : noop())
+        .pipe(autoprefixer('last 10 versions'))
+        .pipe(mergeMediaQuery({log: true}))
         .pipe(gulp.dest(paths.css.dest));
 });
 
@@ -60,6 +79,23 @@ gulp.task('images', function buildImages() {
     return gulp.src(paths.images.src)
         .pipe(gulp.dest(paths.images.dest));
 });
+
+/**
+ * Copies the favicon to the distribution.
+ */
+gulp.task('favicon', function buildImages() {
+    return gulp.src(paths.favicon.src)
+        .pipe(gulp.dest(paths.favicon.dest));
+});
+
+/**
+ * Copies the root config files to the distribution.
+ */
+gulp.task('rootConfig', function buildImages() {
+    return gulp.src(paths.rootConfig.src)
+        .pipe(gulp.dest(paths.rootConfig.dest));
+});
+
 
 /**
  * Copies the server and helper classes to the distribution.
@@ -109,7 +145,7 @@ gulp.task('clean', function clean() {
 /**
  * Builds the output from sources.
  */
-gulp.task('build', gulp.series('images', 'html', 'server', 'validate'));
+gulp.task('build', gulp.series('images', 'favicon', 'rootConfig', 'html', 'server', 'validate'));
 
 /**
  * First rebuilds the output then triggers a reload of the browser.
@@ -151,10 +187,12 @@ gulp.task('nodemon', function (cb) {
 
 /**
  * Sets up live-reloading: Changes to HTML or CSS trigger a rebuild, changes to
- * images and server only result in images, server and helper classes being copied again to dist.
+ * images, favicon, root config files and server only result in images, favicon, root config files, server and helper classes being copied again to dist.
  */
 gulp.task('watch', function watch(done) {
     gulp.watch(paths.images.src, gulp.series('images'));
+    gulp.watch(paths.favicon.src, gulp.series('favicon'));
+    gulp.watch(paths.rootConfig.src, gulp.series('rootConfig'));
     gulp.watch(paths.server.src, gulp.series('server'));
     gulp.watch('src/html/**/*.html', gulp.series('rebuild'));
     gulp.watch(paths.css.src, gulp.series('rebuild'));
