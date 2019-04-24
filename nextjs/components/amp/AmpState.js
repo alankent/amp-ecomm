@@ -8,8 +8,7 @@ class AmpState extends React.Component {
       <>
         <AmpIncludeAmpBind />
         <amp-state id={this.props.id}>
-          <script type="application/json">
-            {JSON.stringify(this.props.children)}
+          <script type="application/json" dangerouslySetInnerHTML={{__html: JSON.stringify(this.props.children)}}>
           </script>
         </amp-state>
       </>
