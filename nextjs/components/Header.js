@@ -1,4 +1,4 @@
-import AmpIncludeAmpList from './amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpList, AmpIncludeAmpMustache} from './amp/AmpInclude';
 
 export default props => (
   <>
@@ -173,6 +173,7 @@ export default props => (
                 width="17"
                 layout="fixed">
                 <AmpIncludeAmpList />
+                <AmpIncludeAmpMustache />
                 <template type="amp-mustache">
                   <span>{`{{.}}`}</span>
                 </template>

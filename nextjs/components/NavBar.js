@@ -1,4 +1,4 @@
-import {AmpIncludeAmpSidebar} from './amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpSidebar} from './amp/AmpInclude';
 
 export default () => (
   <>

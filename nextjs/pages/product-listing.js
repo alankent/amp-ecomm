@@ -14,17 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import {withAmp} from 'next/amp';
 import GlobalCss from '../components/GlobalCss';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer';
 import {
   AmpIncludeAmpList,
+  AmpIncludeAmpMustache,
   AmpIncludeAmpSelector,
-} from '../components/amp/AmpIncludeCustomElement';
+} from '../components/amp/AmpInclude';
 import AmpState from '../components/amp/AmpState';
 
-export default (props) => (
+export default withAmp(props => (
   <>
     <GlobalCss />
     <style jsx global>{`
@@ -224,6 +226,7 @@ export default (props) => (
     `}</style>
     <AmpIncludeAmpSelector />
     <AmpIncludeAmpList />
+    <AmpIncludeAmpMustache />
     <Header />
     <Menu />
     <main id="content" role="main" className="listing">
@@ -259,13 +262,13 @@ export default (props) => (
               <button
                 type="button"
                 option="women"
-                {...(props.gender == 'women' && {selected: true})}>
+                {...props.gender == 'women' && {selected: true}}>
                 Women
               </button>
               <button
                 type="button"
                 option="men"
-                {...(props.gender == 'men' && {selected: true})}>
+                {...props.gender == 'men' && {selected: true}}>
                 Men
               </button>
             </amp-selector>
@@ -344,4 +347,4 @@ export default (props) => (
     </main>
     <Footer />
   </>
-);
+));

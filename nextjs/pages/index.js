@@ -14,12 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import {withAmp} from 'next/amp';
 import GlobalCss from '../components/GlobalCss';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer';
 
-export default () => (
+export default withAmp(() => (
   <>
     <GlobalCss />
     <style jsx global>{`
@@ -255,4 +256,4 @@ export default () => (
     </main>
     <Footer />
   </>
-);
+));
