@@ -2,7 +2,82 @@ import {AmpIncludeAmpSidebar} from './amp/AmpInclude';
 import Social from './Social';
 
 export default () => (
-  <>
+  <amp-sidebar id="header-sidebar" layout="nodisplay">
+    <div className="menu-header">
+      <div
+        role="button"
+        aria-label="close sidebar"
+        on="tap:header-sidebar.toggle"
+        tabIndex="0"
+        className="menu-close-button">
+        ✕
+      </div>
+    </div>
+    <nav className="menu">
+      <ul className="label">
+        <li className="logo">
+          <a href="/" className="block">
+            <amp-img
+              src="static/img/logo-nav.png"
+              width="180"
+              height="73"
+              layout="intrinsic"
+              alt="Company logo"
+              noloading="">
+              <div placeholder="" className="loading" />
+            </amp-img>
+          </a>
+        </li>
+        <li>
+          <a href="/product-listing?gender=women&category=shirts">Women</a>
+        </li>
+        <li className="sub-item">
+          <a href="/product-listing?gender=women&category=shirts">
+            Women's Shirts
+          </a>
+        </li>
+        <li className="sub-item">
+          <a href="/product-listing?gender=women&category=shorts">
+            Women's Shorts
+          </a>
+        </li>
+        <li>
+          <a href="/product-listing?gender=men&category=shirts">Men</a>
+        </li>
+        <li className="sub-item">
+          <a href="/product-listing?gender=men&category=shirts">Men's Shirts</a>
+        </li>
+        <li className="sub-item">
+          <a href="/product-listing?gender=men&category=shorts">Men's Shorts</a>
+        </li>
+        <li>
+          <a href="/blog-listing.html">Blog</a>
+        </li>
+        <li>
+          <a href="/contact.html">Contact us</a>
+        </li>
+      </ul>
+    </nav>
+    <h3>follow us</h3>
+    <Social />
+    <ul className="faq">
+      <li>
+        <a href="#" className="text-decoration-none">
+          Size Guide
+        </a>
+      </li>
+      <li>
+        <a href="#" className="text-decoration-none">
+          Returns Policy
+        </a>
+      </li>
+      <li>
+        <a href="#" className="text-decoration-none">
+          Cookie &amp; privacy policy
+        </a>
+      </li>
+    </ul>
+
     <style jsx global>{`
       amp-sidebar {
         background-color: #fff;
@@ -149,86 +224,7 @@ export default () => (
         }
       }
     `}</style>
+
     <AmpIncludeAmpSidebar />
-    <amp-sidebar id="header-sidebar" layout="nodisplay">
-      <div className="menu-header">
-        <div
-          role="button"
-          aria-label="close sidebar"
-          on="tap:header-sidebar.toggle"
-          tabIndex="0"
-          className="menu-close-button">
-          ✕
-        </div>
-      </div>
-      <nav className="menu">
-        <ul className="label">
-          <li className="logo">
-            <a href="/" className="block">
-              <amp-img
-                src="static/img/logo-nav.png"
-                width="180"
-                height="73"
-                layout="intrinsic"
-                alt="Company logo"
-                noloading="">
-                <div placeholder="" className="loading" />
-              </amp-img>
-            </a>
-          </li>
-          <li>
-            <a href="/product-listing?gender=women&category=shirts">Women</a>
-          </li>
-          <li className="sub-item">
-            <a href="/product-listing?gender=women&category=shirts">
-              Women's Shirts
-            </a>
-          </li>
-          <li className="sub-item">
-            <a href="/product-listing?gender=women&category=shorts">
-              Women's Shorts
-            </a>
-          </li>
-          <li>
-            <a href="/product-listing?gender=men&category=shirts">Men</a>
-          </li>
-          <li className="sub-item">
-            <a href="/product-listing?gender=men&category=shirts">
-              Men's Shirts
-            </a>
-          </li>
-          <li className="sub-item">
-            <a href="/product-listing?gender=men&category=shorts">
-              Men's Shorts
-            </a>
-          </li>
-          <li>
-            <a href="/blog-listing.html">Blog</a>
-          </li>
-          <li>
-            <a href="/contact.html">Contact us</a>
-          </li>
-        </ul>
-      </nav>
-      <h3>follow us</h3>
-      <Social />
-      <ul className="faq">
-        <li>
-          <a href="#" className="text-decoration-none">
-            Size Guide
-          </a>
-        </li>
-        <li>
-          <a href="#" className="text-decoration-none">
-            Returns Policy
-          </a>
-        </li>
-        <li>
-          <a href="#" className="text-decoration-none">
-            Cookie &amp; privacy policy
-          </a>
-        </li>
-      </ul>
-    </amp-sidebar>
-  </>
+  </amp-sidebar>
 );

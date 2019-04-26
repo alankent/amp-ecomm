@@ -2,6 +2,53 @@ import Social from './Social';
 
 export default props => (
   <footer tabIndex="0" role="button">
+    <nav>
+      <ul className="footer-main">
+        <li className="footer-section">
+          <h2>About us</h2>
+          <ul>
+            <li>
+              <a href="#">Size Guide</a>
+            </li>
+            <li>
+              <a href="#">Returns Policy</a>
+            </li>
+            <li>
+              <a href="#">Cookie &amp; privacy policy</a>
+            </li>
+          </ul>
+          <hr className="md-hide lg-hide" />
+        </li>
+        <li className="footer-section">
+          <h2>Contact Us</h2>
+          <ul>
+            <li>
+              <a href="tel:+440000000000">+44(0)000 000 0000</a>
+            </li>
+            <li>
+              <a href="mailto:info@BS-LDN">info@BS-LDN</a>
+            </li>
+            <li>
+              <a href="#">Find a Store</a>
+            </li>
+          </ul>
+          <hr className="md-hide lg-hide" />
+        </li>
+        <li className="footer-section social-section">
+          <h2>follow us</h2>
+          <Social />
+        </li>
+        <li className="footer-logo">
+          <amp-img
+            src="static/img/logo-footer.png"
+            className="xs-hide sm-hide"
+            width="180"
+            height="75"
+          />
+        </li>
+      </ul>
+    </nav>
+
     <style jsx global>{`
       footer {
         background-color: #222;
@@ -97,51 +144,6 @@ export default props => (
         }
       }
     `}</style>
-    <nav>
-      <ul className="footer-main">
-        <li className="footer-section">
-          <h2>About us</h2>
-          <ul>
-            <li>
-              <a href="#">Size Guide</a>
-            </li>
-            <li>
-              <a href="#">Returns Policy</a>
-            </li>
-            <li>
-              <a href="#">Cookie &amp; privacy policy</a>
-            </li>
-          </ul>
-          <hr className="md-hide lg-hide" />
-        </li>
-        <li className="footer-section">
-          <h2>Contact Us</h2>
-          <ul>
-            <li>
-              <a href="tel:+440000000000">+44(0)000 000 0000</a>
-            </li>
-            <li>
-              <a href="mailto:info@BS-LDN">info@BS-LDN</a>
-            </li>
-            <li>
-              <a href="#">Find a Store</a>
-            </li>
-          </ul>
-          <hr className="md-hide lg-hide" />
-        </li>
-        <li className="footer-section social-section">
-          <h2>follow us</h2>
-          <Social />
-        </li>
-        <li className="footer-logo">
-          <amp-img
-            src="static/img/logo-footer.png"
-            className="xs-hide sm-hide"
-            width="180"
-            height="75"
-          />
-        </li>
-      </ul>
-    </nav>
+
   </footer>
 );

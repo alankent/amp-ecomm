@@ -1,7 +1,61 @@
 import {AmpIncludeAmpList, AmpIncludeAmpMustache} from './amp/AmpInclude';
 
 export default props => (
-  <>
+  <header className="header">
+    <div
+      role="button"
+      aria-label="open sidebar"
+      on="tap:header-sidebar.toggle"
+      tabIndex="0"
+      className="burger">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        className="block">
+        <path fill="none" d="M0 0h24v24H0z" />
+        <path
+          fill="currentColor"
+          d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+        />
+      </svg>
+    </div>
+    <a href="/">
+      <amp-img
+        src="static/img/logo.png"
+        width="120"
+        height="37"
+        layout="fixed"
+        alt=""
+      />
+    </a>
+    <div className="cart-icon-container">
+      <a href="/shopping-cart">
+        <div>
+          <amp-img
+            src="static/img/campmor_backpack.png"
+            width="35"
+            height="27"
+          />
+          {props.pageType == 'index' && (
+            <amp-list
+              id="cart-count"
+              src="/api/cart-count"
+              height="17"
+              width="17"
+              layout="fixed">
+              <template type="amp-mustache">
+                <span>{`{{.}}`}</span>
+              </template>
+              <AmpIncludeAmpList />
+              <AmpIncludeAmpMustache />
+            </amp-list>
+          )}
+        </div>
+      </a>
+    </div>
+
     <style jsx global>{`
       .header {
         display: -webkit-box;
@@ -128,60 +182,5 @@ export default props => (
         }
       }
     `}</style>
-    <header className="header">
-      <div
-        role="button"
-        aria-label="open sidebar"
-        on="tap:header-sidebar.toggle"
-        tabIndex="0"
-        className="burger">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          className="block">
-          <path fill="none" d="M0 0h24v24H0z" />
-          <path
-            fill="currentColor"
-            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-          />
-        </svg>
-      </div>
-      <a href="/">
-        <amp-img
-          src="static/img/logo.png"
-          width="120"
-          height="37"
-          layout="fixed"
-          alt=""
-        />
-      </a>
-      <div className="cart-icon-container">
-        <a href="/shopping-cart">
-          <div>
-            <amp-img
-              src="static/img/campmor_backpack.png"
-              width="35"
-              height="27"
-            />
-            {props.pageType == 'index' && (
-              <amp-list
-                id="cart-count"
-                src="/api/cart-count"
-                height="17"
-                width="17"
-                layout="fixed">
-                <AmpIncludeAmpList />
-                <AmpIncludeAmpMustache />
-                <template type="amp-mustache">
-                  <span>{`{{.}}`}</span>
-                </template>
-              </amp-list>
-            )}
-          </div>
-        </a>
-      </div>
-    </header>
-  </>
+  </header>
 );

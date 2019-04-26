@@ -2,8 +2,6 @@ import {AmpIncludeAmpSidebar} from './amp/AmpInclude';
 
 export default () => (
   <>
-    <AmpIncludeAmpSidebar />
-
     <header className="header">
       <div
         role="button"
@@ -50,7 +48,6 @@ export default () => (
         </a>
       </div>
     </header>
-    {/* Start Sidebar */}
     <amp-sidebar id="header-sidebar" layout="nodisplay">
       <div className="menu-header">
         <div
@@ -156,8 +153,7 @@ export default () => (
           </a>
         </li>
       </ul>
+      <AmpIncludeAmpSidebar />
     </amp-sidebar>
-    {/* End Sidebar */}
-    {/* End Navbar */}
   </>
 );

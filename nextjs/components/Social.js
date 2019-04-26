@@ -1,5 +1,33 @@
 export default () => (
-  <>
+  <ul className="social">
+    <li>
+      <a
+        className="icon facebook"
+        href="#"
+        target="_blank"
+        aria-label="Link to AMP HTML Facebook">
+        Facebook
+      </a>
+    </li>
+    <li>
+      <a
+        className="icon instagram"
+        href="#"
+        target="_blank"
+        aria-label="Link to AMP HTML Instagram">
+        Instagram
+      </a>
+    </li>
+    <li>
+      <a
+        className="icon twitter"
+        href="#"
+        target="_blank"
+        aria-label="Link to AMP HTML Twitter">
+        Twitter
+      </a>
+    </li>
+
     <style jsx global>{`
       .social {
         margin: 0.5rem 0 1rem;
@@ -74,35 +102,5 @@ export default () => (
         mask-image: url('static/img/social-icons.svg#instagram-svg-view');
       }
     `}</style>
-
-    <ul className="social">
-      <li>
-        <a
-          className="icon facebook"
-          href="#"
-          target="_blank"
-          aria-label="Link to AMP HTML Facebook">
-          Facebook
-        </a>
-      </li>
-      <li>
-        <a
-          className="icon instagram"
-          href="#"
-          target="_blank"
-          aria-label="Link to AMP HTML Instagram">
-          Instagram
-        </a>
-      </li>
-      <li>
-        <a
-          className="icon twitter"
-          href="#"
-          target="_blank"
-          aria-label="Link to AMP HTML Twitter">
-          Twitter
-        </a>
-      </li>
-    </ul>
-  </>
+  </ul>
 );
