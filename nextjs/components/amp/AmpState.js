@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import {AmpIncludeAmpBind} from './AmpIncludeCustomElement';
+import {AmpIncludeAmpBind} from './AmpInclude';
 
 class AmpState extends React.Component {
   render() {
